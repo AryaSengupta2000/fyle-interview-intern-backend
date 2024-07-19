@@ -19,9 +19,10 @@ Use Docker Compose to build and start the application:
 docker-compose build
 docker-compose up -d
 ```
-### 3. Access the Docker Container
+### 3. Access the Docker Container and migrations
 ```bash
 docker-compose exec app /bin/bash
+flask db upgrade -d core/migrations/
 ```
 ### 4. Run Tests
 ```bash
