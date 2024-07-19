@@ -17,8 +17,9 @@ COPY . .
 ENV FLASK_APP=core/server.py
 
 # Reset the database and run migrations
-RUN rm core/store.sqlite3 && \
-    flask db upgrade -d core/migrations/
+RUN [ -f core/store.sqlite3 ] && rm core/store.sqlite3 || true
+
+RUN flask db upgrade -d core/migrations/
 
 RUN rm -rf .pytest_cache
 
