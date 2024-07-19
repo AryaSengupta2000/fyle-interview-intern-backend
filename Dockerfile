@@ -17,7 +17,7 @@ COPY . .
 ENV FLASK_APP=core/server.py
 
 # Reset the database and run migrations
-RUN [ -f core/store.sqlite3 ] && rm core/store.sqlite3 || true
+RUN rm -f core/store.sqlite3
 
 RUN flask db upgrade -d core/migrations/
 
